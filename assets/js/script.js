@@ -3,7 +3,7 @@ const contact = {
         const btn = document.getElementById('copy-email');
         if (btn) {
             btn.addEventListener('click', () => {
-                navigator.clipboard.writeText('rafinha.savioli@gmail.com').then(() => {
+                navigator.clipboard.writeText('rafaelsavioli.dev@gmail.com').then(() => {
                     const icon = document.getElementById('email-icon');
                     const text = document.getElementById('email-text');
                     icon.className = 'fas fa-check text-green-400';
