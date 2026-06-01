@@ -11,7 +11,7 @@ const contact = {
                     text.className = 'text-green-400';
                     setTimeout(() => {
                         icon.className = 'fas fa-envelope';
-                        text.textContent = 'rafinha.savioli@gmail.com';
+                        text.textContent = 'rafaelsavioli.dev@gmail.com';
                         text.className = '';
                     }, 2000);
                 });
