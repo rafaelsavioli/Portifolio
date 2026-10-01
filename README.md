@@ -1,7 +1,7 @@
 # Portfólio — Rafael Savioli
 
 Site pessoal de **Rafael Savioli**, desenvolvedor front-end.
-Publicação: [rafaelsavioli.dev](https://rafaelsavioli.dev) · Código: [github.com/rafaelsavioli/Portifolio](https://github.com/rafaelsavioli/Portifolio)
+Publicação: [rafaelsavioli.github.io/Portifolio](https://rafaelsavioli.github.io/Portifolio/) · Código: [github.com/rafaelsavioli/Portifolio](https://github.com/rafaelsavioli/Portifolio)
 
 ---
 
