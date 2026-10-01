@@ -1,0 +1,15 @@
+# sistema
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/
+.idea/
+*.swp
+
+# node (nao usado, mas seguro se alguem testar)
+node_modules/
+
+# deploy
+.netlify/
+.vercel/
