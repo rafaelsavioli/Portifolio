@@ -9,6 +9,7 @@
   'use strict';
 
   var doc = document;
+  var $ = function (s, c) { return (c || doc).querySelector(s); };
   var $$ = function (s, c) {
     return Array.prototype.slice.call((c || doc).querySelectorAll(s));
   };
@@ -23,24 +24,23 @@
     el.textContent = String(new Date().getFullYear());
   });
 
-  /* ---------- 2. Entrada do hero ---------- */
-  // CSS puro com transition-delay escalonado. Sem GSAP: 28 KB a menos
-  // e o mesmo resultado visual.
-  var heroItems = $$('.hero .will-animate');
-  var revealHero = function () {
-    heroItems.forEach(function (el) { el.classList.add('is-in'); });
+  /* ---------- 2. Entrada do topo ---------- */
+  // CSS puro com transition-delay escalonado. Sem GSAP.
+  var entrada = $$('.will-animate');
+  var revelarEntrada = function () {
+    entrada.forEach(function (el) { el.classList.add('is-in'); });
   };
 
   if (reduceMotion) {
-    revealHero();
+    revelarEntrada();
   } else {
     window.requestAnimationFrame(function () {
-      window.requestAnimationFrame(revealHero);
+      window.requestAnimationFrame(revelarEntrada);
     });
   }
 
-  // Rede de segurança: se algo travar, o hero aparece mesmo assim.
-  window.setTimeout(revealHero, 1500);
+  // Rede de segurança: se algo travar, o conteúdo aparece mesmo assim.
+  window.setTimeout(revelarEntrada, 1500);
 
   /* ---------- 3. Revela blocos ao entrar na viewport ---------- */
   var revealables = $$('.reveal');
@@ -62,10 +62,20 @@
     }
   }
 
-  /* ---------- 4. Scrollspy: marca a seção visível na sidenav ---------- */
-  // Links reais com href="#id": funcionam sem JS. O JS só acrescenta
-  // o estado visual de "você está aqui".
-  var navLinks = $$('.sidenav a[href^="#"]');
+  /* ---------- 4. Barra superior ganha borda ao rolar ---------- */
+  var topbar = doc.getElementById('topbar');
+  if (topbar) {
+    var onScroll = function () {
+      topbar.classList.toggle('is-stuck', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ---------- 5. Scrollspy: marca a seção visível ----------
+     Links reais com href="#id": funcionam sem JS. O JS só acrescenta
+     o estado visual de "você está aqui". */
+  var navLinks = $$('.topbar__nav a[href^="#"]');
   var watched = navLinks
     .map(function (a) {
       var el = doc.getElementById(a.getAttribute('href').slice(1));
@@ -89,7 +99,7 @@
             });
           });
         },
-        { rootMargin: '-40% 0px -55% 0px' }
+        { rootMargin: '-42% 0px -52% 0px' }
       );
       watched.forEach(function (w) { spy.observe(w.el); });
     } else {
@@ -106,16 +116,16 @@
     }
   }
 
-  /* ---------- 5. Compia o email ao clicar (mailto continua funcionando) ---------- */
-  var emailLink = doc.querySelector('.contact__email');
-  if (emailLink && navigator.clipboard && navigator.clipboard.writeText) {
-    emailLink.addEventListener('click', function () {
-      var addr = emailLink.textContent.trim();
+  /* ---------- 6. Copia o email ao clicar (mailto continua funcionando) ---------- */
+  var mail = $('.contact__mail');
+  if (mail && navigator.clipboard && navigator.clipboard.writeText) {
+    mail.addEventListener('click', function () {
+      var addr = mail.textContent.trim();
       navigator.clipboard.writeText(addr).then(
         function () {
-          var prev = emailLink.textContent;
-          emailLink.textContent = 'copiado';
-          window.setTimeout(function () { emailLink.textContent = prev; }, 1600);
+          var prev = mail.textContent;
+          mail.textContent = 'copiado';
+          window.setTimeout(function () { mail.textContent = prev; }, 1600);
         },
         function () { /* clipboard negado: segue para o mailto */ }
       );
