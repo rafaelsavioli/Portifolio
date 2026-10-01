@@ -24,7 +24,7 @@
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
-  <div class="preloader" aria-hidden="true"><span></span></div>
+  <div class="preloader" aria-hidden="true" hidden><span></span></div>
 
   <header class="nav" id="nav">
     <div class="nav__inner">
@@ -40,21 +40,21 @@
 
   <main id="conteudo">
     <!-- HERO -->
-    <section class="hero" id="topo">
-      <p class="hero__eyebrow">Desenvolvedor Front-End</p>
-      <h1 class="hero__title">
+    <section class="hero" id="topo" style="--enter-y:0">
+      <p class="hero__eyebrow" style="--enter-y:14px">Desenvolvedor Front-End</p>
+      <h1 class="hero__title" style="--enter-y:24px">
         Construo interfaces que<br>
         <em>funcionam de verdade</em>
       </h1>
-      <p class="hero__lead">
+      <p class="hero__lead" style="--enter-y:20px">
         Trabalho com HTML, CSS, JavaScript e React, tirando layouts do Figma
         e entregando telas funcionais, responsivas e acessíveis.
       </p>
-      <div class="hero__actions">
+      <div class="hero__actions" style="--enter-y:16px">
         <a class="btn btn--primary" href="#projetos">Ver projetos</a>
         <a class="btn btn--ghost" href="https://github.com/rafaelsavioli" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
-      <div class="hero__meta">
+      <div class="hero__meta" style="--enter-y:12px">
         <span>Disponível para início imediato</span>
         <span aria-hidden="true">·</span>
         <span>Jundiaí, SP</span>
@@ -253,7 +253,9 @@
     <p>© <span data-year>2026</span> Rafael Savioli</p>
   </footer>
 
-  <noscript><style>.preloader{display:none!important}</style></noscript>
+  <noscript><style>[hidden]{display:none!important}.preloader{display:none!important}</style></noscript>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/hero.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
