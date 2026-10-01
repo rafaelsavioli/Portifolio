@@ -254,7 +254,7 @@ a { color: inherit; }
 }
 
 .hero__title {
-  font-size: clamp(2.5rem, 0.0385vh + 62px, 6rem);
+  font-size: clamp(2.75rem, 0.032vh + 72px, 7.5rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -.04em;
@@ -304,7 +304,7 @@ a { color: inherit; }
   /* A foto e' dimensionada pela ALTURA util da tela, nao pela largura.
      Com altura fixa ela media 746px e era ela — e nao o titulo — que
      estourava em telas de 768px. O 3/4 vem do aspect-ratio. */
-  max-width: min(100%, 23rem, (100vh - 17rem) * 0.75);
+  max-width: min(100%, 26.25rem, (100vh - 21.25rem) * 0.75);
 }
 .portrait img {
   width: 100%;
@@ -331,7 +331,7 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: .5rem 1rem;
   justify-content: space-between;
-  padding-block: .75rem;
+  padding-block: .5625rem;
   border-bottom: 1px solid var(--line);
 }
 .facts dt {
