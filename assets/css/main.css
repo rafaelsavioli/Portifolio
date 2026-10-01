@@ -234,10 +234,10 @@ a { color: inherit; }
   margin-inline: auto;
   /* Topo curto de proposito: o h1 tem que caber sem rolagem.
      Antes eram 9vw (112px no desktop) somados ao cabecalho de 68px. */
-  padding: clamp(1.5rem, 3.5vw, 2.75rem) var(--gutter) clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(2rem, 4.5vw, 3.5rem) var(--gutter) clamp(2.5rem, 6vw, 4rem);
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(1.75rem, 4vw, 3rem);
   /* start, e nao center: a coluna da figura e' bem mais alta que a de
      texto, e centralizar empurrava o titulo para baixo. */
   align-items: start;
@@ -254,7 +254,7 @@ a { color: inherit; }
 }
 
 .hero__title {
-  font-size: clamp(2.5rem, 6.5vw, 4.75rem);
+  font-size: clamp(2.5rem, 6.5vw, 5.25rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -.04em;
@@ -268,10 +268,10 @@ a { color: inherit; }
 }
 
 .hero__lead {
-  max-width: 46ch;
+  max-width: 52ch;
   font-size: clamp(1.0625rem, 2vw, 1.1875rem);
   color: var(--muted);
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.75rem;
   text-wrap: pretty;
 }
 
@@ -301,9 +301,10 @@ a { color: inherit; }
   /* A foto é 3:4 (retrato de estúdio). Um card 1:1 cortaria a cabeça,
      então o quadro acompanha a proporção real da imagem. */
   aspect-ratio: 3 / 4;
-  /* Teto de largura: sem isso, numa coluna de 400px a foto vira 533px
-     de altura e empurra todo o bloco para baixo. */
-  max-width: 19rem;
+  /* Teto de largura. A coluna mede 436px, entao um teto baixo deixaria
+     o retrato pequeno e com.vao vazio ao lado — e, como o alinhamento e'
+     start, o tamanho da foto NAO empurra o titulo para baixo. */
+  max-width: 23rem;
 }
 .portrait img {
   width: 100%;
@@ -330,7 +331,7 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: .5rem 1rem;
   justify-content: space-between;
-  padding-block: .625rem;
+  padding-block: .75rem;
   border-bottom: 1px solid var(--line);
 }
 .facts dt {
