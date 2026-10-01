@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="RS">
-  <rect width="64" height="64" rx="14" fill="#09090B"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#D4A853" stroke-width="2"/>
-  <text x="32" y="42" font-family="Inter,Segoe UI,sans-serif" font-size="26" font-weight="700"
-        fill="#D4A853" text-anchor="middle">RS</text>
+  <rect width="64" height="64" rx="14" fill="#101318"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#10B981" stroke-width="2.5"/>
+  <path d="M22 43V21h4.4l11.2 14.6V21H42v22h-4.4L26.4 28.4V43z" fill="#10B981"/>
 </svg>

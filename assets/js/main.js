@@ -1,48 +1,71 @@
 /**
  * Portfólio — Rafael Savioli
  * Sem dependências externas. Degrada com elegância se o JS falhar.
+ *
+ * O estado inicial das animações está preso a `.js`, que este arquivo
+ * adiciona no <html>. Se o script não rodar, nenhum bloco fica invisível.
  */
 (function () {
   'use strict';
 
   var doc = document;
-  var $ = function (s, c) { return (c || doc).querySelector(s); };
-  var $$ = function (s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); };
+  var $$ = function (s, c) {
+    return Array.prototype.slice.call((c || doc).querySelectorAll(s));
+  };
+
+  // Marca que o JS está vivo. Sem isso, nada anima — e nada some.
+  doc.documentElement.classList.add('js');
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- 1. Ano no rodapé ---------- */
   $$('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());
   });
 
-  /* ---------- 2. Preloader: some ao pintar, nunca segura a pagina ---------- */
-  var preloader = $('.preloader');
-  if (preloader) {
-    // so assume o controle do preloader se ele existir no markup
-    preloader.hidden = false;
-    var hide = function () {
-      if (preloader.classList.contains('is-done')) return;
-      preloader.classList.add('is-done');
-      window.setTimeout(function () {
-        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
-      }, 600);
-    };
-    if (doc.readyState === 'complete') hide();
-    else window.addEventListener('load', hide);
-    window.setTimeout(hide, 2500); // rede de seguranca
+  /* ---------- 2. Entrada do hero ---------- */
+  // CSS puro com transition-delay escalonado. Sem GSAP: 28 KB a menos
+  // e o mesmo resultado visual.
+  var heroItems = $$('.hero .will-animate');
+  var revealHero = function () {
+    heroItems.forEach(function (el) { el.classList.add('is-in'); });
+  };
+
+  if (reduceMotion) {
+    revealHero();
+  } else {
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(revealHero);
+    });
   }
 
-  /* ---------- 3. Nav ganha fundo ao rolar ---------- */
-  var nav = doc.getElementById('nav');
-  if (nav) {
-    var onNavScroll = function () {
-      nav.classList.toggle('is-stuck', window.scrollY > 12);
-    };
-    onNavScroll();
-    window.addEventListener('scroll', onNavScroll, { passive: true });
+  // Rede de segurança: se algo travar, o hero aparece mesmo assim.
+  window.setTimeout(revealHero, 1500);
+
+  /* ---------- 3. Revela blocos ao entrar na viewport ---------- */
+  var revealables = $$('.reveal');
+  if (revealables.length) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealables.forEach(function (el) { el.classList.add('is-revealed'); });
+    } else {
+      var revealer = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-revealed');
+            obs.unobserve(entry.target);
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
+      );
+      revealables.forEach(function (el) { revealer.observe(el); });
+    }
   }
 
-  /* ---------- 4. Scrollspy: marca a secao visivel ---------- */
-  var navLinks = $$('.nav__links a[href^="#"]');
+  /* ---------- 4. Scrollspy: marca a seção visível na sidenav ---------- */
+  // Links reais com href="#id": funcionam sem JS. O JS só acrescenta
+  // o estado visual de "você está aqui".
+  var navLinks = $$('.sidenav a[href^="#"]');
   var watched = navLinks
     .map(function (a) {
       var el = doc.getElementById(a.getAttribute('href').slice(1));
@@ -66,7 +89,7 @@
             });
           });
         },
-        { rootMargin: '-45% 0px -50% 0px' }
+        { rootMargin: '-40% 0px -55% 0px' }
       );
       watched.forEach(function (w) { spy.observe(w.el); });
     } else {
@@ -83,31 +106,8 @@
     }
   }
 
-  /* ---------- 5. Revela blocos ao entrar na viewport ---------- */
-  var revealables = $$('.project, .about__facts li, .skills__group');
-  if (revealables.length) {
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      revealables.forEach(function (el) { el.classList.add('is-revealed'); });
-    } else {
-      revealables.forEach(function (el) { el.classList.add('reveal'); });
-      var revealer = new IntersectionObserver(
-        function (entries, obs) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('is-revealed');
-            obs.unobserve(entry.target);
-          });
-        },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
-      );
-      revealables.forEach(function (el) { revealer.observe(el); });
-    }
-  }
-
-  /* ---------- 6. Copia o email ao clicar (mailto continua funcionando) ---------- */
-  var emailLink = $('.contact__email');
+  /* ---------- 5. Compia o email ao clicar (mailto continua funcionando) ---------- */
+  var emailLink = doc.querySelector('.contact__email');
   if (emailLink && navigator.clipboard && navigator.clipboard.writeText) {
     emailLink.addEventListener('click', function () {
       var addr = emailLink.textContent.trim();
@@ -121,50 +121,4 @@
       );
     });
   }
-  /* ---------- 7. Efeitos de interação ---------- */
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var topline = document.createElement('div');
-  topline.className = 'topline';
-  topline.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(topline);
-
-  if (!reduceMotion) {
-    // marca onde o ponteiro esta, para o brilho radial do card e dos botoes
-    var onPointer = function (ev) {
-      topline.classList.add('is-on');
-      var alvo = ev.target.closest('.btn, .contact__links a, .projects__more, .project');
-      if (!alvo) return;
-      var r = alvo.getBoundingClientRect();
-      alvo.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
-      alvo.style.setProperty('--my', (ev.clientY - r.top) + 'px');
-    };
-
-    var onLeave = function () {
-      topline.classList.remove('is-on');
-    };
-
-    document.addEventListener('pointermove', onPointer, { passive: true });
-    document.addEventListener('pointerleave', onLeave, { passive: true });
-
-    var scrollProgress = 0;
-    var loop = function () {
-      var doc = document.documentElement;
-      var max = doc.scrollHeight - window.innerHeight;
-      var p = max > 0 ? window.scrollY / max : 0;
-      if (Math.abs(p - scrollProgress) > 0.001) {
-        scrollProgress = p;
-        topline.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-      }
-      window.requestAnimationFrame(loop);
-    };
-    window.requestAnimationFrame(loop);
-  }
-
-  /* ---------- 8. Estado final do hero, por seguranca ---------- */
-  // Se o hero.js nao rodar (bloqueado, erro), nada fica invisivel.
-  window.setTimeout(function () {
-    var alvos = document.querySelectorAll('.hero .will-animate');
-    for (var i = 0; i < alvos.length; i++) alvos[i].classList.add('is-in');
-  }, 2500);
 })();

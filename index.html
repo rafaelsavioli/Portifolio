@@ -3,155 +3,232 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rafael Savioli · Desenvolvedor Front-End Júnior</title>
-  <meta name="description" content="Desenvolvedor front-end. Projetos reais em React, JavaScript, HTML e CSS com foco em acessibilidade, responsividade e interfaces funcionales.">
+  <title>Rafael Savioli · Desenvolvedor Front-End</title>
+  <meta name="description" content="Desenvolvedor front-end. Projetos reais em React, JavaScript, HTML e CSS com foco em acessibilidade, responsividade e interfaces que funcionam em produção.">
   <meta name="author" content="Rafael Savioli">
+  <meta name="theme-color" content="#101318">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Rafael Savioli · Desenvolvedor Front-End Júnior">
+  <meta property="og:title" content="Rafael Savioli · Desenvolvedor Front-End">
   <meta property="og:description" content="Projetos reais em React, JavaScript, HTML e CSS com foco em acessibilidade e responsividade.">
-  <meta property="og:url" content="https://rafaelsavioli.dev">
-  <meta property="og:image" content="https://rafaelsavioli.dev/assets/img/og-card.png">
+  <meta property="og:url" content="https://rafaelsavioli.github.io/Portifolio/">
+  <meta property="og:image" content="https://rafaelsavioli.github.io/Portifolio/assets/img/avatar.jpg">
   <meta property="og:locale" content="pt_BR">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rafael Savioli · Desenvolvedor Front-End Júnior">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rafael Savioli · Desenvolvedor Front-End">
   <meta name="twitter:description" content="Projetos reais em React, JavaScript, HTML e CSS com foco em acessibilidade e responsividade.">
-  <link rel="canonical" href="https://rafaelsavioli.dev">
+  <link rel="canonical" href="https://rafaelsavioli.github.io/Portifolio/">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
-  <div class="preloader" aria-hidden="true" hidden><span></span></div>
+  <div class="layout">
 
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a class="nav__brand" href="#topo">RS<span>.</span></a>
-      <nav class="nav__links" aria-label="Navegação principal">
-        <a href="#sobre">Sobre</a>
-        <a href="#skills">Skills</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </div>
-  </header>
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__inner">
 
-  <main id="conteudo">
-    <!-- HERO -->
-    <section class="hero" id="topo" style="--enter-y:0">
-      <p class="hero__eyebrow" style="--enter-y:14px">Desenvolvedor Front-End</p>
-      <h1 class="hero__title" style="--enter-y:24px">
-        Construo interfaces que<br>
-        <em>funcionam de verdade</em>
-      </h1>
-      <p class="hero__lead" style="--enter-y:20px">
-        Trabalho com HTML, CSS, JavaScript e React, tirando layouts do Figma
-        e entregando telas funcionais, responsivas e acessíveis.
-      </p>
-      <div class="hero__actions" style="--enter-y:16px">
-        <a class="btn btn--primary" href="#projetos">Ver projetos</a>
-        <a class="btn btn--ghost" href="https://github.com/rafaelsavioli" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="profile">
+          <img class="profile__avatar" src="assets/img/avatar.jpg" alt="Foto de Rafael Savioli" width="160" height="160">
+          <div class="profile__text">
+            <h1 class="profile__name">Rafael Savioli</h1>
+            <p class="profile__role">Desenvolvedor Front-End</p>
+            <p class="profile__badge">
+              <span class="profile__dot" aria-hidden="true"></span>
+              Disponível para início imediato
+            </p>
+          </div>
+        </div>
+
+        <hr class="rule">
+
+        <h2 class="sidebar__title" id="t-contatos">Contatos</h2>
+        <ul class="contacts" aria-labelledby="t-contatos">
+          <li class="contacts__item">
+            <svg class="contacts__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none"/><path d="m4 6 8 6 8-6" fill="none"/></svg>
+            <div>
+              <p class="contacts__label">Email</p>
+              <a class="contacts__value" href="mailto:rafaelsavioli.dev@gmail.com">rafaelsavioli.dev@gmail.com</a>
+            </div>
+          </li>
+          <li class="contacts__item">
+            <svg class="contacts__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" fill="none"/><circle cx="12" cy="10" r="2.6" fill="none"/></svg>
+            <div>
+              <p class="contacts__label">Localização</p>
+              <p class="contacts__value">Jundiaí, São Paulo</p>
+            </div>
+          </li>
+          <li class="contacts__item">
+            <svg class="contacts__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" fill="none"/></svg>
+            <div>
+              <p class="contacts__label">Foco</p>
+              <p class="contacts__value">Acessibilidade e responsividade</p>
+            </div>
+          </li>
+          <li class="contacts__item">
+            <svg class="contacts__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3v18" fill="none"/><circle cx="12" cy="12" r="9" fill="none"/></svg>
+            <div>
+              <p class="contacts__label">Empresa</p>
+              <a class="contacts__value" href="https://www.hazeflow.com.br" target="_blank" rel="noopener noreferrer">HazeFlow (founder)</a>
+            </div>
+          </li>
+        </ul>
+
+        <hr class="rule">
+
+        <h2 class="sidebar__title" id="t-social">Redes</h2>
+        <ul class="social" aria-labelledby="t-social">
+          <li>
+            <a class="social__link" href="https://github.com/rafaelsavioli" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="https://www.linkedin.com/in/rafael-savioli-a51886289/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="mailto:rafaelsavioli.dev@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none"/><path d="m4 6 8 6 8-6" fill="none"/></svg>
+              <span>Email</span>
+            </a>
+          </li>
+        </ul>
+
+        <nav class="sidenav" aria-label="Navegação do portfólio">
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+
       </div>
-      <div class="hero__meta" style="--enter-y:12px">
-        <span>Disponível para início imediato</span>
-        <span aria-hidden="true">·</span>
-        <span>Jundiaí, SP</span>
-      </div>
-    </section>
+    </aside>
 
-    <!-- SOBRE -->
-    <section class="section" id="sobre">
-      <h2 class="section__title">Sobre</h2>
-      <div class="about">
-        <div class="about__text">
-          <p>
+    <!-- ============ CONTEUDO ============ -->
+    <main class="main" id="conteudo">
+
+      <section class="hero" id="sobre">
+        <p class="hero__eyebrow will-animate">Sobre mim</p>
+        <h2 class="hero__title will-animate">
+          Construo interfaces que <em>funcionam de verdade</em>
+        </h2>
+        <p class="hero__lead will-animate">
+          Trabalho com HTML, CSS, JavaScript e React, tirando layouts do Figma e
+          entregando telas funcionais, responsivas e acessíveis.
+        </p>
+
+        <div class="stats will-animate">
+          <div class="stats__item">
+            <p class="stats__value">3</p>
+            <p class="stats__label">projetos publicados</p>
+          </div>
+          <div class="stats__item">
+            <p class="stats__value">23</p>
+            <p class="stats__label">telas em produção</p>
+          </div>
+          <div class="stats__item">
+            <p class="stats__value">0</p>
+            <p class="stats__label">violações de acessibilidade</p>
+          </div>
+        </div>
+
+        <div class="hero__actions will-animate">
+          <a class="btn btn--primary" href="#projetos">Ver projetos</a>
+          <a class="btn btn--ghost" href="https://github.com/rafaelsavioli" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+
+        <div class="panel will-animate">
+          <p class="panel__text">
             Sou desenvolvedor front-end e founder da <strong>HazeFlow</strong>, onde
-            construo sistemas web que rodam em produção para clientes reais.
-            Na prática, isso significa que já entreguei código que outras pessoas usam
+            construo sistemas web que rodam em produção para clientes reais. Na
+            prática, isso significa que já entreguei código que outras pessoas usam
             todos os dias — e que quebra quando está errado.
           </p>
-          <p>
+          <p class="panel__text">
             Gosto de transformar layout em interface que funciona: responsiva de
-            320px a ultrawide, navegável por teclado, com foco visível. Sou
-           fluente em CSS e JavaScript, e estou aprofundando React e
-            TypeScript.
+            320px a ultrawide, navegável por teclado, com foco visível. Em um dos
+            meus projetos encontrei e corrigi um vazamento real de dados que
+           permitia a um usuário ver leads de outro. Isso só aparece quando o
+            sistema está em uso.
           </p>
         </div>
-        <ul class="about__facts">
-          <li><strong>3+</strong><span>projetos publicados</span></li>
-          <li><strong>0</strong><span>violações de acessibilidade</span></li>
-          <li><strong>100%</strong><span>layouts responsivos</span></li>
-        </ul>
-      </div>
-    </section>
+      </section>
 
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <h2 class="section__title">Skills</h2>
-      <div class="skills">
-        <div class="skills__group">
-          <h3 class="skills__label">Usando todo dia</h3>
-          <ul class="skills__list">
-            <li class="skill-tag">HTML5</li>
-            <li class="skill-tag">CSS</li>
-            <li class="skill-tag">JavaScript (ES6+)</li>
-            <li class="skill-tag">Git</li>
-            <li class="skill-tag">GitHub</li>
-          </ul>
-        </div>
-        <div class="skills__group">
-          <h3 class="skills__label">Praticando</h3>
-          <ul class="skills__list">
-            <li class="skill-tag">React</li>
-            <li class="skill-tag">Tailwind CSS</li>
-            <li class="skill-tag">Node.js</li>
-            <li class="skill-tag">TypeScript</li>
-          </ul>
-        </div>
-        <div class="skills__group">
-          <h3 class="skills__label">Práticas de qualidade</h3>
-          <ul class="skills__list">
-            <li class="skill-tag">Responsividade</li>
-            <li class="skill-tag">Acessibilidade (WCAG)</li>
-            <li class="skill-tag">Componentização</li>
-            <li class="skill-tag">Consumo de APIs</li>
-            <li class="skill-tag">Figma</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <!-- SKILLS -->
+      <section class="section" id="skills">
+        <h3 class="section__title"><span class="section__mark" aria-hidden="true"></span>Skills</h3>
 
-    <!-- PROJETOS -->
-    <section class="section" id="projetos">
-      <h2 class="section__title">Projetos</h2>
+        <div class="skills">
+          <div class="skills__group reveal">
+            <h4 class="skills__label">Usando todo dia</h4>
+            <ul class="chips">
+              <li class="chip">HTML5</li>
+              <li class="chip">CSS</li>
+              <li class="chip">JavaScript (ES6+)</li>
+              <li class="chip">Git</li>
+              <li class="chip">GitHub</li>
+            </ul>
+          </div>
+          <div class="skills__group reveal">
+            <h4 class="skills__label">Praticando</h4>
+            <ul class="chips">
+              <li class="chip">React</li>
+              <li class="chip">Tailwind CSS</li>
+              <li class="chip">Node.js</li>
+              <li class="chip">TypeScript</li>
+            </ul>
+          </div>
+          <div class="skills__group reveal">
+            <h4 class="skills__label">Práticas de qualidade</h4>
+            <ul class="chips">
+              <li class="chip">Acessibilidade (WCAG AA)</li>
+              <li class="chip">Responsividade</li>
+              <li class="chip">Componentização</li>
+              <li class="chip">Consumo de APIs</li>
+              <li class="chip">Figma</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <article class="project">
-        <div class="project__info">
+      <!-- PROJETOS -->
+      <section class="section" id="projetos">
+        <h3 class="section__title"><span class="section__mark" aria-hidden="true"></span>Projetos</h3>
+
+        <article class="project reveal">
           <div class="project__head">
-            <h3 class="project__name">FluxoBoard</h3>
+            <h4 class="project__name">FluxoBoard</h4>
             <span class="project__badge">React</span>
           </div>
           <p class="project__summary">
-            Dashboard financeiro pessoal com quadro Kanban de pagamentos.
-            Front-end em React 18 com Vite, backend em Node.js e Prisma.
+            Dashboard financeiro pessoal com quadro Kanban de pagamentos. Front-end
+            em React 18 com Vite, backend em Node.js e Prisma.
           </p>
-          <div class="project__details">
-            <div class="project__detail">
-              <span class="project__detail-label">O problema</span>
-              <p>Organizar contas a pagar exigia planilha: sem histórico de status, sem visualização de fluxo de caixa e sem meta de economia acompanhada.</p>
+          <dl class="project__details">
+            <div>
+              <dt>O problema</dt>
+              <dd>Organizar contas a pagar exigia planilha: sem histórico de status, sem visualização de fluxo de caixa e sem meta de economia acompanhada.</dd>
             </div>
-            <div class="project__detail">
-              <span class="project__detail-label">O que construí</span>
-              <p>Drag & drop entre Planned → Pending → Paid → Overdue com atualização otimista, CRUD de transações com filtros combinados, metas com barras de progresso e autenticação JWT. Backend modular em camadas (routes → controller → service).</p>
+            <div>
+              <dt>O que construí</dt>
+              <dd>Drag &amp; drop entre Planned → Pending → Paid → Overdue com atualização otimista, CRUD de transações com filtros combinados, metas com barras de progresso e autenticação JWT. Backend modular em camadas (routes → controller → service).</dd>
             </div>
-            <div class="project__detail">
-              <span class="project__detail-label">Decisões técnicas</span>
-              <p>Recharts para os gráficos, dnd-kit para drag & drop acessível por teclado, Zod para validação de request e tratamento de erro centralizado.</p>
+            <div>
+              <dt>Decisões técnicas</dt>
+              <dd>Recharts para os gráficos, dnd-kit para drag &amp; drop acessível por teclado, Zod para validação de request e tratamento de erro centralizado.</dd>
             </div>
-          </div>
-          <ul class="project__tags">
+          </dl>
+          <ul class="tags">
             <li class="tag">React 18</li>
             <li class="tag">Vite</li>
             <li class="tag">Tailwind</li>
@@ -160,34 +237,32 @@
             <li class="tag">Zod</li>
           </ul>
           <a class="project__link" href="https://github.com/rafaelsavioli/Projeto_002" target="_blank" rel="noopener noreferrer">Ver código no GitHub</a>
-        </div>
-      </article>
+        </article>
 
-      <article class="project">
-        <div class="project__info">
+        <article class="project reveal">
           <div class="project__head">
-            <h3 class="project__name">HazeWeb</h3>
+            <h4 class="project__name">HazeWeb</h4>
             <span class="project__badge">Empresa própria</span>
           </div>
           <p class="project__summary">
             Sistema de gestão em produção que eu desenvolvo na HazeFlow, minha
             empresa. Roda para clientes reais.
           </p>
-          <div class="project__details">
-            <div class="project__detail">
-              <span class="project__detail-label">O problema</span>
-              <p>Gestão de leads, projetos, processos e financeiro espalhada em planilhas e WhatsApp — sem histórico de mudanças e sem controle de quem alterou o quê.</p>
+          <dl class="project__details">
+            <div>
+              <dt>O problema</dt>
+              <dd>Gestão de leads, projetos, processos e financeiro espalhada em planilhas e WhatsApp — sem histórico de mudanças e sem controle de quem alterou o quê.</dd>
             </div>
-            <div class="project__detail">
-              <span class="project__detail-label">O que construí</span>
-              <p>Sistema web com 23 telas e 22 APIs. Frente: HTML, CSS e JavaScript sem framework, com foco em acessibilidade. Back: PHP e MySQL com autenticação e controle de sessão.</p>
+            <div>
+              <dt>O que construí</dt>
+              <dd>Sistema web com 23 telas e 22 APIs. Frente: HTML, CSS e JavaScript sem framework, com foco em acessibilidade. Back: PHP e MySQL com autenticação e controle de sessão.</dd>
             </div>
-            <div class="project__detail">
-              <span class="project__detail-label">O que aprendi na auditoria</span>
-              <p>Auditei o sistema inteiro e encontrei um vazamento real de dados: um usuário conseguia ver leads e potenciais de outro. Corrigi: adicionei filtros de dono em todas as consultas e adicionei affected-row no helper de banco para a API parar de retornar sucesso sem alterar nada.</p>
+            <div>
+              <dt>O que aprendi na auditoria</dt>
+              <dd>Auditei o sistema inteiro e encontrei um vazamento real de dados: um usuário conseguia ver leads e potenciais de outro. Corrigi com filtros de dono em todas as consultas e affected-row no helper de banco, para a API parar de retornar sucesso sem alterar nada.</dd>
             </div>
-          </div>
-          <ul class="project__tags">
+          </dl>
+          <ul class="tags">
             <li class="tag">HTML</li>
             <li class="tag">CSS</li>
             <li class="tag">JavaScript</li>
@@ -196,66 +271,63 @@
             <li class="tag">Acessibilidade</li>
           </ul>
           <a class="project__link" href="https://www.hazeflow.com.br/HazeWeb" target="_blank" rel="noopener noreferrer">Ver projeto em produção</a>
-        </div>
-      </article>
+        </article>
 
-      <article class="project">
-        <div class="project__info">
+        <article class="project reveal">
           <div class="project__head">
-            <h3 class="project__name">Visual Analyser</h3>
+            <h4 class="project__name">Visual Analyser</h4>
             <span class="project__badge">Canvas API</span>
           </div>
           <p class="project__summary">
             Analisador de paleta e tom de pele que roda 100% no navegador, sem
             nenhuma API externa.
           </p>
-          <div class="project__details">
-            <div class="project__detail">
-              <span class="project__detail-label">O problema</span>
-              <p>Descobrir tom de pele e paleta dominante de uma imagem normalmente exige enviar a foto para um servidor — e um servidor externo.</p>
+          <dl class="project__details">
+            <div>
+              <dt>O problema</dt>
+              <dd>Descobrir tom de pele e paleta dominante de uma imagem normalmente exige enviar a foto para um servidor — e um servidor externo.</dd>
             </div>
-            <div class="project__detail">
-              <span class="project__detail-label">O que construí</span>
-              <p>Análise de pixels com a Canvas API: extração do tom de pele, colorimetria e paleta dominante pelo método median cut. Um quiz pontua o resultado e define o estilo pessoal.</p>
+            <div>
+              <dt>O que construí</dt>
+              <dd>Análise de pixels com a Canvas API: extração do tom de pele, colorimetria e paleta dominante pelo método median cut. Um quiz pontua o resultado e define o estilo pessoal.</dd>
             </div>
-            <div class="project__detail">
-              <span class="project__detail-label">O que aprendi</span>
-              <p>Trabalhar com processamento de imagem sem sair do client-side: cada milissegundo de processamento acontece antes da pintura da tela.</p>
+            <div>
+              <dt>O que aprendi</dt>
+              <dd>Trabalhar com processamento de imagem sem sair do client-side: cada milissegundo de processamento acontece antes da pintura da tela.</dd>
             </div>
-          </div>
-          <ul class="project__tags">
+          </dl>
+          <ul class="tags">
             <li class="tag">JavaScript</li>
             <li class="tag">Canvas API</li>
             <li class="tag">Tailwind</li>
             <li class="tag">Colorimetria</li>
           </ul>
           <a class="project__link" href="https://github.com/rafaelsavioli/Visual_Analiser" target="_blank" rel="noopener noreferrer">Ver código no GitHub</a>
-        </div>
-      </article>
+        </article>
 
-      <a class="projects__more" href="https://github.com/rafaelsavioli?tab=repositories" target="_blank" rel="noopener noreferrer">
-        Outros 11 projetos públicos no GitHub →
-      </a>
-    </section>
+        <a class="projects__more" href="https://github.com/rafaelsavioli?tab=repositories" target="_blank" rel="noopener noreferrer">
+          Outros 11 projetos públicos no GitHub →
+        </a>
+      </section>
 
-    <!-- CONTATO -->
-    <section class="section section--contato" id="contato">
-      <h2 class="contact__title">Vamos conversar?</h2>
-      <a class="contact__email" href="mailto:rafaelsavioli.dev@gmail.com">rafaelsavioli.dev@gmail.com</a>
-      <div class="contact__links">
-        <a href="https://github.com/rafaelsavioli" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/rafael-savioli-a51886289/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </section>
-  </main>
+      <!-- CONTATO -->
+      <section class="section section--contato" id="contato">
+        <h3 class="section__title"><span class="section__mark" aria-hidden="true"></span>Contato</h3>
+        <p class="contact__title">Vamos conversar?</p>
+        <a class="contact__email" href="mailto:rafaelsavioli.dev@gmail.com">rafaelsavioli.dev@gmail.com</a>
+        <p class="contact__note">
+          Respondo em até um dia útil. Se tiver um projeto em mente, manda o
+          contexto que eu digo direto se consigo entregar.
+        </p>
+      </section>
 
-  <footer class="footer">
-    <p>© <span data-year>2026</span> Rafael Savioli</p>
-  </footer>
+      <footer class="footer">
+        <p>© <span data-year>2026</span> Rafael Savioli · Feito à mão, sem framework</p>
+      </footer>
 
-  <noscript><style>[hidden]{display:none!important}.preloader{display:none!important}</style></noscript>
-  <script src="assets/vendor/gsap.min.js" defer></script>
-  <script src="assets/js/hero.js" defer></script>
+    </main>
+  </div>
+
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
