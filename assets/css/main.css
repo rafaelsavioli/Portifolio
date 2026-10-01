@@ -65,14 +65,15 @@ a { color: inherit; }
 
 /* ---------- Design tokens ---------- */
 :root {
-  --color-bg: #09090B;
-  --color-surface: #18181B;
-  --color-surface-2: #1F1F23;
-  --color-text: #FAFAF9;
-  --color-muted: #A1A1AA;
-  --color-line: #27272A;
-  --color-accent: #D4A853;
-  --color-accent-hover: #E3BC6E;
+  --color-bg: #F7F6F3;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #EFEDE8;
+  --color-text: #16150F;
+  --color-muted: #5C5950;
+  --color-line: #D2CEC4;
+  --color-accent: #C73609;
+  --color-accent-hover: #A82F08;
+  --color-accent-soft: rgba(199, 54, 9, 0.08);
 
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
@@ -87,7 +88,7 @@ a { color: inherit; }
 /* ---------- Base ---------- */
 ::selection {
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #FFFFFF;
 }
 
 :focus-visible {
@@ -105,7 +106,7 @@ a { color: inherit; }
   z-index: 200;
   padding: .75rem 1.25rem;
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #FFFFFF;
   font-weight: 600;
   font-size: .875rem;
   text-decoration: none;
@@ -171,7 +172,7 @@ a { color: inherit; }
   border-bottom: 1px solid transparent;
 }
 .nav.is-stuck {
-  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   backdrop-filter: blur(12px);
   border-bottom-color: var(--color-line);
 }
@@ -285,7 +286,7 @@ a { color: inherit; }
 
 .btn--primary {
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #FFFFFF;
 }
 .btn--primary:hover { background: var(--color-accent-hover); }
 
@@ -325,6 +326,7 @@ a { color: inherit; }
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: .625rem;
+  box-shadow: 0 1px 2px rgba(22, 21, 15, 0.04);
 }
 .about__facts strong {
   font-family: var(--font-mono);
@@ -369,6 +371,12 @@ a { color: inherit; }
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: 999px;
+  box-shadow: 0 1px 1px rgba(22, 21, 15, 0.03);
+  transition: border-color .25s var(--ease-out), color .25s var(--ease-out);
+}
+.skill-tag:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  color: var(--color-accent);
 }
 
 /* ---------- Projetos ---------- */
@@ -401,8 +409,8 @@ a { color: inherit; }
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--color-accent);
-  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  background: var(--color-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 26%, transparent);
   border-radius: 999px;
 }
 
@@ -421,7 +429,7 @@ a { color: inherit; }
 
 .project__detail {
   padding-left: 1.125rem;
-  border-left: 2px solid #3A3A40;
+  border-left: 2px solid var(--color-line);
 }
 .project__detail-label {
   display: block;
@@ -580,10 +588,10 @@ a { color: inherit; }
   background: linear-gradient(
     100deg,
     var(--color-accent) 0%,
-    var(--color-accent-hover) 22%,
-    #F2D9A8 38%,
-    var(--color-accent) 56%,
-    var(--color-accent-hover) 78%,
+    var(--color-accent-hover) 26%,
+    #E8663A 42%,
+    var(--color-accent) 60%,
+    var(--color-accent-hover) 82%,
     var(--color-accent) 100%
   );
   background-size: 260% 100%;
@@ -598,35 +606,13 @@ a { color: inherit; }
   50%      { background-position: 100% 50%; }
 }
 
-/* ---------- Cursor com glow (so em ponteiro fino) ---------- */
-.glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 440px;
-  height: 440px;
-  margin: -220px 0 0 -220px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--color-accent) 9%, transparent) 0%,
-    transparent 62%
-  );
-  transition: opacity .5s var(--ease-out);
-  will-change: transform;
-}
-.glow.is-on { opacity: 1; }
-
 /* ---------- Detalhe: linha que acende no topo da tela ---------- */
 .topline {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
+  height: 2px;
   z-index: 101;
   pointer-events: none;
   background: linear-gradient(
@@ -645,8 +631,11 @@ a { color: inherit; }
 .project {
   position: relative;
   border-radius: .75rem;
-  margin-inline: calc(-1rem - var(--gutter) / 2);
-  padding-inline: calc(1rem + var(--gutter) / 2);
+  /* Sangra exatamente o gutter da section, para o fundo do hover ocupar a
+     largura toda. Usar 100vw aqui estoura a barra: 100vw inclui a barra de
+     rolagem, 100% nao. */
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
   padding-block: clamp(2rem, 5vw, 3rem);
   transition: background .45s var(--ease-out);
 }
@@ -660,13 +649,13 @@ a { color: inherit; }
   background:
     radial-gradient(
       620px circle at var(--mx, 50%) var(--my, 50%),
-      color-mix(in srgb, var(--color-accent) 9%, transparent),
+      color-mix(in srgb, var(--color-accent) 6%, transparent),
       transparent 42%
     );
   transition: opacity .45s var(--ease-out);
 }
 .project:hover::before { opacity: 1; }
-.project:hover { background: color-mix(in srgb, var(--color-surface) 45%, transparent); }
+.project:hover { background: var(--color-surface); box-shadow: 0 2px 16px rgba(22, 21, 15, 0.06); }
 
 /* ---------- Destaque de alvo nos botoes e links ---------- */
 .btn,
@@ -688,7 +677,7 @@ a { color: inherit; }
   opacity: 0;
   background: radial-gradient(
     180px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--color-accent) 18%, transparent),
+    color-mix(in srgb, var(--color-accent) 12%, transparent),
     transparent 70%
   );
   transition: opacity .35s var(--ease-out);
@@ -757,11 +746,6 @@ a { color: inherit; }
 }
 .section:hover .section__title::after { width: 100%; }
 
-/* ---------- Sem ponteiro fino: nao ha cursor, nem glow ---------- */
-@media (hover: none), (pointer: coarse) {
-  .glow { display: none; }
-}
-
 /* ---------- Respeita quem pediu menos movimento ---------- */
 @media (prefers-reduced-motion: reduce) {
   .hero__title em { animation: none; background-position: 0% 50%; }
@@ -775,9 +759,10 @@ a { color: inherit; }
 
 /* ---------- Impressao ---------- */
 @media print {
-  .nav, .preloader, .hero__actions, .projects__more { display: none; }
+  .nav, .preloader, .topline, .hero__actions, .projects__more { display: none; }
   body { background: #fff; color: #000; }
   .section { padding: 1.5rem 0; }
+  .project { break-inside: avoid; }
 }
 /* ---------- Revelacao ao rolar (JS em main.js) ---------- */
 .reveal {
