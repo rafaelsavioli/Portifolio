@@ -254,7 +254,7 @@ a { color: inherit; }
 }
 
 .hero__title {
-  font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+  font-size: clamp(2.75rem, 4.95vw + 1.54rem, 7.5rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -.04em;
@@ -268,8 +268,8 @@ a { color: inherit; }
 }
 
 .hero__lead {
-  max-width: 52ch;
-  font-size: clamp(1.0625rem, 2vw, 1.1875rem);
+  max-width: 54ch;
+  font-size: clamp(1.125rem, 0.55vw + 0.85rem, 1.5rem);
   color: var(--muted);
   margin-bottom: 1.75rem;
   text-wrap: pretty;
@@ -304,7 +304,7 @@ a { color: inherit; }
   /* Teto de largura. A coluna mede 436px, entao um teto baixo deixaria
      o retrato pequeno e com.vao vazio ao lado — e, como o alinhamento e'
      start, o tamanho da foto NAO empurra o titulo para baixo. */
-  max-width: 23rem;
+  max-width: min(100%, 30rem);
 }
 .portrait img {
   width: 100%;
@@ -400,7 +400,7 @@ a { color: inherit; }
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
   padding-left: 1.75rem;
   border-left: 2px solid var(--cobalt);
-  font-size: clamp(1.375rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 1vw + 1rem, 2.75rem);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -.025em;
@@ -474,7 +474,7 @@ a { color: inherit; }
 }
 
 .section__title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.875rem, 1.3vw + 1.1rem, 3.5rem);
   font-weight: 700;
   letter-spacing: -.03em;
 }
@@ -746,7 +746,7 @@ a { color: inherit; }
 }
 
 .contact__title {
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(2.25rem, 1.8vw + 1.5rem, 5.5rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.04em;
