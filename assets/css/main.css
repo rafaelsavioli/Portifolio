@@ -819,6 +819,36 @@ a { color: inherit; }
 }
 .footer__up:hover { color: var(--cobalt); }
 
+/* ---------- Selo de sistema em produção ---------- */
+/* Nao e link: o repositorio e privado e a URL publica cai numa tela de
+   login. Seria levar o recrutador a um beco sem saida. */
+.card__badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .3125rem .75rem .3125rem .625rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: .8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.card__badge-live::before {
+  content: "";
+  width: .4375rem;
+  height: .4375rem;
+  border-radius: 50%;
+  background: #16A34A;
+  flex: none;
+}
+.card__badge-live svg {
+  width: .875rem;
+  height: .875rem;
+  color: var(--muted);
+}
+
 /* ---------- Animações ----------
    O estado inicial está preso a .js, que o main.js adiciona no <html>.
    Sem JS, ou se o script falhar, nenhum bloco fica invisível. */
