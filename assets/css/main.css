@@ -294,7 +294,9 @@ a { color: inherit; }
   border-radius: 1rem;
   overflow: hidden;
   background: var(--card-2);
-  aspect-ratio: 1;
+  /* A foto é 3:4 (retrato de estúdio). Um card 1:1 cortaria a cabeça,
+     então o quadro acompanha a proporção real da imagem. */
+  aspect-ratio: 3 / 4;
 }
 .portrait img {
   width: 100%;

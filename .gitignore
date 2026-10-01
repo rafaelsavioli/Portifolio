@@ -18,8 +18,11 @@ node_modules/
 # briefing interno: nao vai para o repo publico
 context.MD
 
-# foto de 1,7 MB que o design atual nao usa (design e' tipografico)
+# PNG original de 1,7 MB, fora do repo. O site usa a versao
+# otimizada em assets/img/rafael.jpg (94 KB).
 assets/img/rafael-hero.png
 
-# avatar do GitHub (400x400, 6 KB)
+# avatar padrao do GitHub (ilustracao abstrata, nao e foto). Nao usado.
+assets/img/avatar.jpg
+
 assets/img/.gitkeep
