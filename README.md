@@ -40,13 +40,53 @@ Layout fluido entre **320px e 2560px**, testado em quatro larguras.
 Sem scroll horizontal em nenhum ponto de quebra.
 Tipografia com `clamp()` — escala junto com a viewport, sem media query solta.
 
+## Efeitos visuais
+
+Entrada do hero em **GSAP** (`expo.out` com stagger), porque a curva é mais
+precisa do que uma `transition` resolve. Todo o resto é **CSS puro**:
+
+| efeito | onde | técnica |
+|---|---|---|
+| entrada escalonada do hero | `assets/js/hero.js` | GSAP core, 28 KB gzip, auto-hospedado |
+| gradiente que percorre o título | `.hero__title em` | `background-clip: text` + `@keyframes` |
+| brilho que segue o cursor | `.glow` | `radial-gradient` + `requestAnimationFrame` com interpolação |
+| linha de progresso no topo | `.topline` | `scaleX` ligado ao scroll |
+| destaque no card do projeto | `.project::before` | gradiente radial ancorado em `--mx` / `--my` |
+| linha que acende na base da tag | `.tag::after` | `scaleX` no hover |
+| pulso no indicador de disponibilidade | `.hero__meta` | `box-shadow` animado |
+
+**Por que só o core do GSAP:** o `ScrollTrigger` ficou de fora. Tudo que
+depende de rolagem usa `IntersectionObserver`, que é nativo e não ocupa a
+thread principal. O custo do GSAP ficou em 28 KB gzip, servido pelo próprio
+site — nenhuma requisição a terceiro.
+
+**Efeitos medidos, não estimados.** O brilho usa `accent` a 9%, o que dá um
+delta de luminância de 0,006 sobre o fundo: visível, sem virar mancha.
+Acima de ~0,03 já parece sujeira no fundo.
+
+**Três garantias de degradação:**
+
+1. **Sem JavaScript** o site aparece completo. O preloader só existe quando
+   o JS assume o controle (`hidden` no markup, liberado pelo `main.js`), com
+   a regra `[hidden]` para vencer o `display: grid`.
+2. **Com `prefers-reduced-motion`** nenhuma animação roda e o brilho nem é
+   criado no DOM.
+3. **Com GSAP bloqueado** o `hero.js` cai no caminho CSS e o hero entra sem
+   curva animada, em vez de ficar invisível.
+
+Um `setTimeout` de segurança marca o estado final do hero: se a animação
+travar no meio, o conteúdo aparece assim mesmo.
+
 ## Estrutura
 
 ```
 index.html              marcação semântica
 assets/
-  css/main.css          tokens + componentes + responsivo
-  js/main.js            ano, preloader, scrollspy, revelação, copiar email
+  css/main.css          tokens + componentes + efeitos + responsivo
+  js/main.js            ano, preloader, scrollspy, brilho, progresso
+  js/hero.js            entrada do hero (GSAP), com fallback CSS
+  vendor/gsap.min.js    GSAP 3.12.5 core, auto-hospedado
+  fonts/                Inter latin + latin-ext em woff2
   img/favicon.svg       ícone em SVG inline
 ```
 
