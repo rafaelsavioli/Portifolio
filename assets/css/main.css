@@ -80,8 +80,8 @@ a { color: inherit; }
   --card-2: #F2F0EA;
 
   --ink: #14161A;
-  --muted: #55585F;
-  --dim: #6B6F78;
+  --muted: #4A4E56;
+  --dim: #5C616B;
 
   --line: #E3E0D8;
   --line-strong: #CFCBC0;
@@ -232,11 +232,15 @@ a { color: inherit; }
 .hero {
   max-width: var(--maxw);
   margin-inline: auto;
-  padding: clamp(3.5rem, 9vw, 7rem) var(--gutter) clamp(3rem, 7vw, 5rem);
+  /* Topo curto de proposito: o h1 tem que caber sem rolagem.
+     Antes eram 9vw (112px no desktop) somados ao cabecalho de 68px. */
+  padding: clamp(1.5rem, 3.5vw, 2.75rem) var(--gutter) clamp(2.5rem, 6vw, 4rem);
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  /* start, e nao center: a coluna da figura e' bem mais alta que a de
+     texto, e centralizar empurrava o titulo para baixo. */
+  align-items: start;
 }
 
 .eyebrow {
@@ -297,6 +301,9 @@ a { color: inherit; }
   /* A foto é 3:4 (retrato de estúdio). Um card 1:1 cortaria a cabeça,
      então o quadro acompanha a proporção real da imagem. */
   aspect-ratio: 3 / 4;
+  /* Teto de largura: sem isso, numa coluna de 400px a foto vira 533px
+     de altura e empurra todo o bloco para baixo. */
+  max-width: 19rem;
 }
 .portrait img {
   width: 100%;
@@ -323,13 +330,14 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: .5rem 1rem;
   justify-content: space-between;
-  padding-block: .75rem;
+  padding-block: .625rem;
   border-bottom: 1px solid var(--line);
 }
 .facts dt {
   font-family: var(--font-mono);
-  font-size: .6875rem;
-  letter-spacing: .08em;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
   text-transform: uppercase;
   color: var(--dim);
 }
@@ -415,6 +423,10 @@ a { color: inherit; }
 }
 
 .about__text p {
+  /* Teto de 68ch: sem ele o paragrafo herda os 1184px do --maxw e
+     vira uma linha de 110 caracteres. */
+  max-width: 68ch;
+  font-size: 1rem;
   color: var(--muted);
   margin-bottom: 1.125rem;
   text-wrap: pretty;
@@ -512,15 +524,20 @@ a { color: inherit; }
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: .1em;
-  color: var(--dim);
+  color: var(--muted);
 }
 
+/* ---------- Legibilidade ----------
+   12px e' o piso para texto miudo em interface. Abaixo disso o olho
+   começa a forcar, especialmente em mono com letter-spacing.
+   O auditor aponto 11px em pills, dt e tags; subiram para 12px. */
+
 .pill {
-  padding: .25rem .6875rem;
+  padding: .3125rem .75rem;
   font-family: var(--font-mono);
-  font-size: .6875rem;
-  font-weight: 500;
-  letter-spacing: .04em;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .02em;
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -562,16 +579,20 @@ a { color: inherit; }
 }
 .card__details dt {
   font-family: var(--font-mono);
-  font-size: .6875rem;
+  font-size: .75rem;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .04em;
   text-transform: uppercase;
   color: var(--dim);
-  margin-bottom: .25rem;
+  margin-bottom: .3125rem;
 }
 .card__details dd {
   margin: 0;
-  font-size: .9375rem;
+  /* Sem teto, um dd ocupa a largura toda do card — a ~1184px isso vira
+     uma linha de 110 caracteres, e o olho perde o ponto de retorno.
+     68ch e' o limite confortavel para leitura em tela. */
+  max-width: 68ch;
+  font-size: 1rem;
   color: var(--muted);
   text-wrap: pretty;
 }
@@ -595,12 +616,13 @@ a { color: inherit; }
   gap: .375rem;
 }
 .tags li {
-  padding: .1875rem .5rem;
+  padding: .25rem .5625rem;
   font-family: var(--font-mono);
-  font-size: .6875rem;
+  font-size: .75rem;
+  font-weight: 500;
   color: var(--muted);
   background: var(--card-2);
-  border-radius: .3125rem;
+  border-radius: .375rem;
 }
 
 .card__link {
@@ -828,7 +850,7 @@ a { color: inherit; }
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
-    padding-top: clamp(2.5rem, 7vw, 4rem);
+    padding-top: clamp(1.25rem, 4vw, 2rem);
   }
   .hero__col--figure {
     grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
