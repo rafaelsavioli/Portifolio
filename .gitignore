@@ -14,3 +14,10 @@ node_modules/
 .netlify/
 .vercel/
 
+
+# briefing interno: nao vai para o repo publico
+context.MD
+
+# foto de 1,7 MB que o design atual nao usa (design e' tipografico)
+assets/img/rafael-hero.png
+assets/img/.gitkeep
