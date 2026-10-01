@@ -254,7 +254,7 @@ a { color: inherit; }
 }
 
 .hero__title {
-  font-size: clamp(2.75rem, 4.95vw + 1.54rem, 7.5rem);
+  font-size: clamp(2.5rem, 0.0385vh + 62px, 6rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -.04em;
@@ -269,7 +269,7 @@ a { color: inherit; }
 
 .hero__lead {
   max-width: 54ch;
-  font-size: clamp(1.125rem, 0.55vw + 0.85rem, 1.5rem);
+  font-size: clamp(1.125rem, 0.35vh + 12px, 1.375rem);
   color: var(--muted);
   margin-bottom: 1.75rem;
   text-wrap: pretty;
@@ -301,10 +301,10 @@ a { color: inherit; }
   /* A foto é 3:4 (retrato de estúdio). Um card 1:1 cortaria a cabeça,
      então o quadro acompanha a proporção real da imagem. */
   aspect-ratio: 3 / 4;
-  /* Teto de largura. A coluna mede 436px, entao um teto baixo deixaria
-     o retrato pequeno e com.vao vazio ao lado — e, como o alinhamento e'
-     start, o tamanho da foto NAO empurra o titulo para baixo. */
-  max-width: min(100%, 30rem);
+  /* A foto e' dimensionada pela ALTURA util da tela, nao pela largura.
+     Com altura fixa ela media 746px e era ela — e nao o titulo — que
+     estourava em telas de 768px. O 3/4 vem do aspect-ratio. */
+  max-width: min(100%, 23rem, (100vh - 17rem) * 0.75);
 }
 .portrait img {
   width: 100%;
@@ -852,6 +852,12 @@ a { color: inherit; }
   .hero {
     grid-template-columns: 1fr;
     padding-top: clamp(1.25rem, 4vw, 2rem);
+  }
+  /* Em coluna unica o texto vem antes da figura, entao o limite e'
+     "o titulo + lead + botoes cabem", e nao "as duas colunas cabem".
+     O teto de vh acima foi calibrado para o layout de dois blocos. */
+  .hero__title {
+    font-size: clamp(2.5rem, 2.9rem, 2.875rem);
   }
   .hero__col--figure {
     grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
