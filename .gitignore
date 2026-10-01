@@ -26,3 +26,7 @@ assets/img/rafael-hero.png
 assets/img/avatar.jpg
 
 assets/img/.gitkeep
+
+# relatorios do Lighthouse (gerados na verificacao)
+lh.json
+lh2.json
