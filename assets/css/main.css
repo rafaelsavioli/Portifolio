@@ -608,6 +608,12 @@ a { color: inherit; }
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
 }
+.card__links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
 
 .tags {
   list-style: none;
